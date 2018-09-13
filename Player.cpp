@@ -15,9 +15,29 @@ Player::~Player() {
 }
 
 int Player::calculateTotal() {
+  hasHighAce = false;
   int total = 0;
   for(Card* c: hand) {
-    total += c->value;
+    if(c->value > 10) {
+      total += 10;
+    }
+    else {
+      total += c->value;
+      cout << "Adding card value" << endl;
+    }
+
+    if(c->value == 1) {
+      if(!hasHighAce && (total + 10) <= 21) {
+        cout << "High ace not detected adding 10" << endl;
+        total += 10;
+        hasHighAce = true;
+      }
+    }
+
+    if(total > 21 && hasHighAce) {
+      total -= 10;
+      hasHighAce = false;
+    }
   }
   return total;
 }
