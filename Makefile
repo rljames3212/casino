@@ -1,16 +1,18 @@
-game:
-	g++ main.o Deck.o Player.o -o Game
+all: game.exe
 
-main:
+game.exe: main.o Deck.o	Player.o
+	g++ main.o Deck.o Player.o -o game.exe
+
+main.o: main.cpp Deck.h	Player.h
 	g++ -c main.cpp Deck.h Player.h
 
-deck:
+deck.o: Deck.cpp Card.h
 	g++ -c Deck.cpp Card.h
 
-card:
+card: Card.h
 	g++ -c Card.h
 
-player:
+player.o: Player.cpp Card.h
 	g++ -c Player.cpp Card.h
 
 clean:
