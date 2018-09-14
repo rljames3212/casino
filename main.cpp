@@ -6,7 +6,7 @@
 int main() {
   Deck* master = new Deck();
 
-  Player p1;
+  Player p1{"Boby"};
 
   master->shuffleDeck();
   Card* c1 = new Card("Hearts", "Ace", 1);

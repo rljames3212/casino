@@ -1,17 +1,19 @@
 #include "Player.h"
 
 #include <vector>
-#include <iostream>
+#include <string>
 using namespace std;
 
-Player::Player() {
-  hasHighAce = false;
-}
+Player::Player(string name): name(name), hasHighAce(false) {};
 
 Player::~Player() {
   for(Card* c: hand) {
     delete c;
   }
+}
+
+string Player::getName() const {
+  return name;
 }
 
 int Player::calculateTotal() {
@@ -23,12 +25,10 @@ int Player::calculateTotal() {
     }
     else {
       total += c->value;
-      cout << "Adding card value" << endl;
     }
 
     if(c->value == 1) {
       if(!hasHighAce && (total + 10) <= 21) {
-        cout << "High ace not detected adding 10" << endl;
         total += 10;
         hasHighAce = true;
       }

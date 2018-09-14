@@ -13,7 +13,7 @@ card: Card.h
 	g++ -c Card.h
 
 player.o: Player.cpp Card.h
-	g++ -c Player.cpp Card.h
+	g++ -c Player.cpp Card.h 
 
 clean:
 	rm *.o *.exe *.h.gch
