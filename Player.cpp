@@ -9,6 +9,7 @@ Player::Player(string name): name(name), hasHighAce(false) {};
 Player::~Player() {
   for(Card* c: hand) {
     delete c;
+    c = 0;
   }
 }
 

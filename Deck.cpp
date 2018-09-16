@@ -22,6 +22,7 @@ Deck::Deck() {
 Deck::~Deck() {
   for(Card* card: deck) {
     delete card;
+    card = 0;
   }
 }
 
